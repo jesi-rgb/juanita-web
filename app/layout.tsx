@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { Inter as FontSans, Lato, Nunito } from "next/font/google";
+import { Inter as FontSans, Lato, Libre_Franklin, Nunito, Open_Sans, Source_Serif_4 } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
 import VideoDialog from "@/components/ui/VideoDialog";
@@ -8,20 +8,15 @@ import VideoDialog from "@/components/ui/VideoDialog";
 import "@/styles.css";
 import { TailwindIndicator } from "@/components/ui/breakpoint-indicator";
 
-const fontSans = FontSans({
+const fontSans = Libre_Franklin({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-const nunito = Nunito({
+const fontSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-nunito",
-});
-
-const lato = Lato({
-  subsets: ["latin"],
-  variable: "--font-lato",
-  weight: "400",
+  variable: "--font-serif",
+  weight: ["400", "700"], style: ["normal", "italic"]
 });
 
 export const metadata: Metadata = {
@@ -35,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(fontSans.variable, nunito.variable, lato.variable)}>
+    <html lang="en" className={cn(fontSans.variable, fontSerif.variable)}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <VideoDialogProvider>
           {children}
